@@ -41,7 +41,7 @@ public class GameElement {
       shape.offset(0, (int) (velocityY * interval));
       velocityY = (float) (velocityY * 1.001); //increase speed as game progresses
 
-      // if this GameElement collides with the wall, reverse direction
+      // if this GameElement collides with the wall, reverse direction and play sound
       if (shape.top < 0 && velocityY < 0 ||
               shape.bottom > view.getScreenHeight() && velocityY > 0) {
          playSound(soundId);

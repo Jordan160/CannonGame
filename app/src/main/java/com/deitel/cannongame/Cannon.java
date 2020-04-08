@@ -27,20 +27,15 @@ public class Cannon {
       this.barrelLength = barrelLength;
       paint.setStrokeWidth(barrelWidth); // set width of barrel
       paint.setColor(Color.BLACK); // Cannon's color is Black
-      align(Math.PI / 2); // Cannon barrel facing straight right
-      drawLine();
-   }
-
-   public void drawLine() {
-      aimLinePaint= new Paint();
       aimLinePaint.setAlpha(255);
       aimLinePaint.setStrokeWidth(4);
       aimLinePaint.setColor(Color.BLACK);
       aimLinePaint.setStyle(Paint.Style.FILL_AND_STROKE);
       aimLinePaint.setPathEffect(new DashPathEffect(new float[]{2,4,6},50));
+      align(Math.PI / 2); // Cannon barrel facing straight right
    }
 
-   // aligns the Cannon's barrel to the given angle
+   // aligns the Cannon's barrel and aim line to the given angle
    public void align(double barrelAngle) {
       this.barrelAngle = barrelAngle;
       barrelEnd.x = (int) (barrelLength * Math.sin(barrelAngle));
@@ -79,7 +74,7 @@ public class Cannon {
       // draw cannon barrel
       canvas.drawLine(0, view.getScreenHeight() / 2, barrelEnd.x,
               barrelEnd.y, paint);
-
+      //draw cannon aim line
       canvas.drawLine(0,view.getScreenHeight() / 2, aimLineEnd.x, aimLineEnd.y, aimLinePaint);
       // draw cannon base
       canvas.drawCircle(0, (int) view.getScreenHeight() / 2,
